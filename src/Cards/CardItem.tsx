@@ -1,20 +1,30 @@
 import Card from "./Cards";
-
+import pizza from '../assets/food-images/pizza.png'
+import burger from '../assets/food-images/cheeseburger.png'
+import salad from '../assets/food-images/salad.png'
 function CardItem() {
     return (
-        <div>
+        <div className="cards">
             <Card
-                title="Card 1"
+                title="Pizza Filled"
                 description="hello world"
-                image="https://www.youtube.com/"
+                image={pizza}
                 price="$10.00"
             />
+
              <Card
-                title="Card 1"
+                title="Cheese Burger "
                 description="hello world"
-                image="https://www.youtube.com/"
+                image={burger}
                 price="$10.00"
             />
+
+            <Card 
+            title="Tomato Salad"
+            description="hello world"
+            image={salad}
+            price="$20.00"/>
+
         </div>
     );
 }

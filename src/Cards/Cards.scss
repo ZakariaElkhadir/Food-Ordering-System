@@ -1,11 +1,30 @@
+$card-bg: #3C3D37;
 .card-container{
     height: 500px;
-    
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ECDFCC;
     
     .card{
     width: 263px;
     height: 363px;
-    border: 1px solid black;
+    border: none;
     text-align: center;
     margin-top: 50px;
+    padding-top: 10px;
+    background-color: $card-bg;
+    border-radius: 15px;
+    button{
+        background-color: #697565;
+        border: none;
+        width: 118px;
+        height: 36px;
+        border-radius: 50px;
+        margin-top: 1.3rem;
+    }
 }}
+.cards {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
