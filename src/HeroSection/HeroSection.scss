@@ -1,0 +1,72 @@
+$white-color: #ECDFCC;
+$hero-bg: #181C14;
+$btn-bg: #FF8C04;
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+.inter{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+.Hero-section{
+    width: 100%;
+    height: 680px;
+    background-color: $hero-bg;
+    
+    .container{
+        display: flex;
+        justify-content: space-around;
+        padding-top: 10%;
+        align-items: center;
+        color: $white-color;
+        h2{
+            font-size: 60px;
+            @extend .inter;
+            padding-top: 0;
+            margin: 60px;
+            
+            
+        }
+        img{
+            margin-left: 50px;
+            margin-right: -50px;
+        }
+        
+        
+        
+    }
+    .button{
+        margin-top: -50px;
+    }
+    
+    .button .btn-1{
+        background-color: $btn-bg;
+        width: 200px;
+        height: 60px;
+        border-radius: 50px;
+        border: none;
+        font-size: 25px;
+        margin-right: 50px;
+        color: $white-color;
+        
+
+    }
+    .button .btn-2{
+        background: none;
+        width: 200px;
+        height: 60px;
+        border-radius: 50px;
+        border: 2px solid $btn-bg;
+        font-size: 25px;
+        color: $white-color;
+        &:hover{
+            
+            background-color: $btn-bg;
+            transition: 0.3s;
+            
+            
+        }
+        
+    }
+    
+
+}

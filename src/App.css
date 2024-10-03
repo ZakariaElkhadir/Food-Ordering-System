@@ -1,0 +1,23 @@
+/* General Reset */
+:root{
+  --bg: #ECDFCC;
+}
+body, ul, li, a, h1, h2, h3, p {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+header, .container, .card-container{
+  padding-left: 160px;
+  padding-right: 160px;
+}
+.button{
+  padding: 0;
+  padding-left: 240px;
+}
+
+.app{
+  background-color: #ECDFCC;
+}
