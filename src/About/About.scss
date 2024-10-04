@@ -1,0 +1,17 @@
+.about-section{
+    height: 630px;
+    background-color: #181C14;
+    h2{
+        color: #ECDFCC;
+    }
+    .about-container{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        }
+        p{
+            padding: 40px 20px 40px 40px;
+            color: #ECDFCC;
+            font-size: 23px;
+        }
+}

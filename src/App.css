@@ -9,7 +9,7 @@ body, ul, li, a, h1, h2, h3, p {
   text-decoration: none;
 }
 
-header, .container,.cards{
+header, .container,.cards, .about-section{
   padding-left: 160px;
   padding-right: 160px;
 }
