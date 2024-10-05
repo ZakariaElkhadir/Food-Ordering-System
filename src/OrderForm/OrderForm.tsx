@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './OrderForm.scss';
 
 
 interface OrderFormProps {
@@ -7,7 +8,7 @@ interface OrderFormProps {
 }
 
 const OrderForm: React.FC<OrderFormProps> = ({ onSubmit, onClose }) => {
-    const [tableNumber, setTableNumber] = useState('');
+    const [tableNumber, setTableNumber] = useState('1');
     const [quantity, setQuantity] = useState(1);
 
     const handleSubmit = (e: React.FormEvent) => {
