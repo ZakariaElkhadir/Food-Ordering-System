@@ -1,6 +1,7 @@
 import Header from "../Header/Header";
 import contImage from '../assets/food-images/prawn-caesar.png'
 import './HeroSection.scss'
+import { Link } from "react-router-dom";
 function HeroSection() {
     return (
         <>
@@ -11,7 +12,9 @@ function HeroSection() {
                 <img src={contImage} width={500}  alt="salad plate" />
              </div>
                 <div className="button">
-                    <button className="btn-1">Buy now</button>
+                    <Link to='/products'>
+                    <button className="btn-1">Order now</button>
+                    </Link>
                     <button className="btn-2">Sho</button>
                 </div>
             

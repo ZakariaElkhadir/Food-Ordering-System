@@ -1,13 +1,31 @@
 import './App.css'
 import Body from './Body/Body'
+import Products from './Products/Products';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 
 
 
 function App() {
-
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Body/>, 
+    },
+    {
+      path: "/home",
+      element: <Body/>, 
+    },
+    {
+      path: "/products",
+      element: <Products/>,
+    }
+  ]);
   return (
     <div className='app'>
-      <Body/>
+       <RouterProvider router={router} />
     </div>
     
   )
