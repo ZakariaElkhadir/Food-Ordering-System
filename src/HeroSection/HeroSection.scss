@@ -41,6 +41,7 @@ $btn-bg: #FF8C04;
     }
     
     .button .btn-1{
+        cursor: pointer;
         background-color: $btn-bg;
         width: 200px;
         height: 60px;
@@ -53,6 +54,7 @@ $btn-bg: #FF8C04;
 
     }
     .button .btn-2{
+        cursor: pointer;
         background: none;
         width: 200px;
         height: 60px;
