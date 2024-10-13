@@ -21,7 +21,7 @@ $card-bg: #3C3D37;
     img {
         width: 100%;
         height: 200px;
-        object-fit: cover;
+        object-fit: contain;
       }
     
     &:hover {
@@ -58,8 +58,11 @@ $card-bg: #3C3D37;
       }
 }}
 .cards {
-    padding-top: 50px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }

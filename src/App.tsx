@@ -1,5 +1,6 @@
 import './App.css'
 import Body from './Body/Body'
+import Dashboard from './Dashboard/Dashboard';
 import Products from './Products/Products';
 import {
   createBrowserRouter,
@@ -21,7 +22,11 @@ function App() {
     {
       path: "/products",
       element: <Products/>,
-    }
+    },
+    {
+      path: "/dashboard",
+      element: <Dashboard/>,
+    },
   ]);
   return (
     <div className='app'>
