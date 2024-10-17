@@ -1,10 +1,15 @@
+import Footer from '../Footer/Footer'
+import Header from '../Header/Header'
 import './Products.scss'
 import ProductsItem from './ProductsItem'
 const Products = () => {
     return (
         <div className="products">
-            <h1>Products Page</h1>
+            
+            <Header/>
+            <h2>Products Page</h2>
             <ProductsItem/>
+            <Footer/>
         </div>
     )
 }
