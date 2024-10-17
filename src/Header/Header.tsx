@@ -5,7 +5,9 @@ function Header() {
         <>
             <header>
                 <nav className="nav-bar">
-                <div className="logo">Riad Flavors</div>
+                <div className="logo">
+                    <Link to="/">Riad Flavors</Link>
+                </div>
                 <ul className='nav-links'>
                   <li><a href="#home">Home</a></li>
                   <li><a href="#menu">Services</a></li>

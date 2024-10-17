@@ -1,9 +1,11 @@
+@import '../HeroSection/HeroSection.scss'; // for getting the inter font
 .about-section{
     height: 600px;
     background-color: #181C14;
     
     h2{
         color: #ECDFCC;
+        @extend .inter;
     }
     .about-container{
         display: flex;
@@ -12,9 +14,10 @@
         padding-top: 90px;
         }
         p{
-            padding: 40px 20px 40px 40px;
+            padding: 40px;
             color: #ECDFCC;
             font-size: 23px;
+            text-align: justify;
         }
         img{
             width: 50%;
