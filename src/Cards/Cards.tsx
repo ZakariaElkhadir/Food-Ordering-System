@@ -1,6 +1,7 @@
-import  { useState } from 'react';
+import { useState } from 'react';
+import { useOrderStore } from './store/orderStore';
+import OrderForm from '../OrderForm/OrderForm';
 import './Cards.scss';
-import OrderForm from '../OrderForm/OrderForm'; // Make sure to create this component
 
 interface CardProps {
     image: string;
@@ -16,15 +17,30 @@ interface OrderDetails {
 
 function Card({ image, title, description, price }: CardProps) {
     const [showOrderForm, setShowOrderForm] = useState(false);
+    const [showSuccess, setShowSuccess] = useState(false);
+    const addOrder = useOrderStore((state) => state.addOrder);
 
     const handleOrderClick = () => {
         setShowOrderForm(true);
+        setShowSuccess(false);
     };
 
     const handleOrderSubmit = (orderDetails: OrderDetails) => {
-        console.log('Order placed:', { title, price, ...orderDetails });
+        const orderData = {
+            title,
+            price,
+            ...orderDetails,
+            timestamp: new Date().toISOString()
+        };
+        
+        addOrder(orderData);
         setShowOrderForm(false);
-        // Here you would typically send this data to your backend
+        setShowSuccess(true);
+        
+        // Hide success message after 3 seconds
+        setTimeout(() => {
+            setShowSuccess(false);
+        }, 3000);
     };
 
     const handleCloseForm = () => {
@@ -39,6 +55,11 @@ function Card({ image, title, description, price }: CardProps) {
                 <p>{description}</p>
                 <p>{price}</p>
                 <button onClick={handleOrderClick}>Buy Now</button>
+                {showSuccess && (
+                    <div className="success-message">
+                        Order placed successfully!
+                    </div>
+                )}
             </div>
             {showOrderForm && (
                 <OrderForm 
