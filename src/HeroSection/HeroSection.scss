@@ -19,12 +19,11 @@ $btn-bg: #FF8C04;
         align-items: center;
         color: $white-color;
         h2{
-            font-size: 60px;
+            font-size: 3.3rem;
             @extend .inter;
-            margin-top: 10px;
-            
-
-            
+            margin-top: -30px;
+            padding-right: 20px;
+            text-align: center;
             
         }
         img{
@@ -36,19 +35,18 @@ $btn-bg: #FF8C04;
         
     }
     .button{
-        margin-left: 180px;
-        padding-left: 0;
+        margin: -90px 0 0 -28.5px;
     }
     
     .button .btn-1{
         cursor: pointer;
         background-color: $btn-bg;
-        width: 200px;
+        width: 150px;
         height: 60px;
         border-radius: 50px;
         border: none;
         font-size: 25px;
-        margin-right: 50px;
+        margin-right: 30px;
         color: $white-color;
         
 
@@ -56,7 +54,7 @@ $btn-bg: #FF8C04;
     .button .btn-2{
         cursor: pointer;
         background: none;
-        width: 200px;
+        width: 150px;
         height: 60px;
         border-radius: 50px;
         border: 2px solid $btn-bg;

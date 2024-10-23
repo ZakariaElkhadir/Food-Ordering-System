@@ -1,11 +1,14 @@
 // pages/Dashboard.tsx
 import { useOrderStore } from '../Cards/store/orderStore';
 import { useNavigate } from 'react-router-dom';
+
 import './Dashboard.css';
 
 const Dashboard = () => {
   const orders = useOrderStore((state) => state.orders);
   const navigate = useNavigate();
+  const clearOrders = useOrderStore((state) => state.clearOrders);
+  const removeOrder = useOrderStore((state) => state.removeOrder);
 
   return (
     <div className="dashboard">
@@ -13,6 +16,9 @@ const Dashboard = () => {
         <h1>Orders Dashboard</h1>
         <button className="back-button" onClick={() => navigate('/')}>
           Back to Menu
+        </button>
+        <button className="clear-button" onClick={clearOrders}>
+          Clear Orders
         </button>
       </div>
 
@@ -32,6 +38,7 @@ const Dashboard = () => {
                 <p className="timestamp">
                   {new Date(order.timestamp).toLocaleString()}
                 </p>
+                
               </div>
             </div>
           ))}

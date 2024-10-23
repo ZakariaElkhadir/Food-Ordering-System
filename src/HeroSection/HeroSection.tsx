@@ -8,7 +8,7 @@ function HeroSection() {
         <Header/>
         <section className="Hero-section">
              <div className="container">
-                <h2 >We serve the Test <br/>You Love</h2>
+                <h2 >We serve the Test You Love</h2>
                 <img src={contImage} width={500}  alt="salad plate" />
              </div>
                 <div className="button">
