@@ -13,7 +13,7 @@ header {
     color: $header-color;
     background-color: $hero-bg;
     @extend .outfit;
-    position: relative; // Add this for proper mobile menu positioning
+    position: relative;
 }
 
 .nav-bar {
@@ -47,8 +47,8 @@ header {
 
     .nav-links {
         display: flex;
-        margin: 0; // Add this to remove default margin
-        padding: 0; // Add this to remove default padding
+        margin: 0;
+        padding: 0;
 
         li {
             margin-left: 20px;
@@ -81,6 +81,9 @@ header {
 }
 
 @media (max-width: 768px) {
+header{
+    padding-left: 10px;
+    padding-right: 10px;
     .nav-bar {
         .menu-toggle {
             display: block;
@@ -94,7 +97,7 @@ header {
             top: 100%;
             left: 0;
             right: 0;
-            background-color: $hero-bg; // Use your hero background color
+            background-color: $hero-bg;
             padding: 1rem;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             z-index: 10;
@@ -108,14 +111,15 @@ header {
                 text-align: center;
 
                 a {
-                    display: block; // Make links full width
+                    display: block;
                     padding: 10px;
 
                     &::after {
-                        display: none; // Remove underline effect on mobile
+                        display: none;
                     }
                 }
             }
         }
     }
+}
 }
