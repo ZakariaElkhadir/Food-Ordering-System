@@ -9,8 +9,11 @@ function HeroSection() {
         <section className="Hero-section">
              <div className="container">
                 <h2 >We serve the Test You Love</h2>
+                <div>
                 <img src={contImage} width={500}  alt="salad plate" />
+                </div>
              </div>
+             
                 <div className="button">
                     <Link to='/products'>
                     <button className="btn-1">Order now</button>

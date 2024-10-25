@@ -1,6 +1,12 @@
 $white-color: #ECDFCC;
 $hero-bg: #181C14;
 $btn-bg: #FF8C04;
+
+$mobile-sm: 320px;
+$mobile: 480px;
+$tablet: 768px;
+$desktop: 1024px;
+$desktop-lg: 1200px;
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 .inter{
     font-family: "Inter", sans-serif;
@@ -11,7 +17,7 @@ $btn-bg: #FF8C04;
     width: 100%;
     height: 680px;
     background-color: $hero-bg;
-    
+
     .container{
         display: flex;
         justify-content: space-around;
@@ -24,20 +30,20 @@ $btn-bg: #FF8C04;
             margin-top: -30px;
             padding-right: 20px;
             text-align: center;
-            
+
         }
         img{
             margin-left: 50px;
             margin-right: -50px;
         }
-        
-        
-        
+
+
+
     }
     .button{
         margin: -90px 0 0 -28.5px;
     }
-    
+
     .button .btn-1{
         cursor: pointer;
         background-color: $btn-bg;
@@ -48,7 +54,7 @@ $btn-bg: #FF8C04;
         font-size: 25px;
         margin-right: 30px;
         color: $white-color;
-        
+
 
     }
     .button .btn-2{
@@ -61,40 +67,96 @@ $btn-bg: #FF8C04;
         font-size: 25px;
         color: $white-color;
         &:hover{
-            
+
             background-color: $btn-bg;
             transition: 0.3s;
-            
-            
+
+
         }
-        
+
     }
-    
+
 
 }
-@media (max-width: 768px){
-    .Hero-section{
-        height: 100%;
-        .container{
+@media (max-width: $tablet) {
+    .Hero-section {
+        min-height: 90vh;
+        padding: 20px;
+
+        .container {
             flex-direction: column;
-            padding-top: 20%;
-            h2{
-                font-size: 2.5rem;
-                padding-right: 0;
-                margin-top: 0;
+            padding-top: clamp(60px, 15%, 100px);
+            gap: 2rem;
+
+            h2 {
+                font-size: clamp(2rem, 6vw, 2.5rem);
+                padding: 0 15px;
+                margin: 0 auto;
+                max-width: 90%;
+                line-height: 1.2;
             }
-            img{
-                margin-left: 0;
-                margin-right: 0;
-                width: 400px;
+
+            img {
+                width: 100%;
+                max-width: 400px;
+                height: auto;
+                margin: 20px auto;
+                display: block;
             }
         }
-        .button{
 
-            margin: 0 0 0 -110px;
-            padding-bottom: 15px;
+        .button {
+            display: flex;
+
+            justify-content: center;
+            gap: 1rem;
+            margin: 0 0 0 -100px;
+            padding-bottom: 20px;
+            width: 100%;
+            max-width: 500px;
             .btn-1{
+                margin-right: 20px;
+            }
+            .btn-1, .btn-2 {
+                width: clamp(130px, 40%, 155px);
+                margin: 0;
+                font-size: 1.4rem;
+            }
+        }
+    }
+}
+@media (max-width: $mobile) {
+    .Hero-section {
+        margin: 0;
+        padding: 0;
+        height: 80vh;
+        
+        .container {
+            display: flex; /* Ensures items align properly */
+            flex-direction: column; /* Stacks items vertically */
+            justify-content: center;
+            align-items: center; /* Center the items horizontally */
+            text-align: center; /* Center the text */
+            
+            h2 {
+                white-space: nowrap; /* Prevents text from wrapping */
+                font-size: clamp(25px, 4vw, 32px); /* Responsive font size */
+                margin-left: -130px;
+                padding: 10px;
+            }
 
+            img {
+                width: 300px; /* Responsive image size */
+            }
+        }
+
+        .button {
+            margin: 0;
+            padding: 0;
+
+            .btn-1, .btn-2 {
+                width: 80%;
+                margin: 30px;
             }
         }
     }
