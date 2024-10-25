@@ -26,7 +26,7 @@ $desktop-lg: 1200px;
             font-size: 23px;
             text-align: justify;
             width: 200%;
-            margin-left: -50px;
+            margin-left: 0px;
         }
         img{
             width: 50%;
@@ -51,6 +51,7 @@ $desktop-lg: 1200px;
         p{
             padding: 20px;
             font-size: 20px;
+            width: auto;
         }
         img{
             width: 100%;
@@ -60,7 +61,7 @@ $desktop-lg: 1200px;
 }
 @media screen and (max-width: $mobile){
     .about-section{
-        height: 1200px;
+        height: 800px;
         h2{
             font-size: 1.5rem;
         }
@@ -73,7 +74,8 @@ $desktop-lg: 1200px;
             font-size: 20px;
             line-height: 1.4;
             text-align: center;
-            margin-left: -70px;
+            margin-left: -120px;
+            width: 300px;
         }
         img{
             width: 100%;
