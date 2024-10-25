@@ -18,7 +18,7 @@ function HeroSection() {
                     <Link to='/products'>
                     <button className="btn-1">Order now</button>
                     </Link>
-                    <button className="btn-2">Sho</button>
+                    <button className="btn-2">Show More</button>
                 </div>
             
         </section>
