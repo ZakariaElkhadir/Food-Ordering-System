@@ -1,7 +1,7 @@
+// store/orderStore.ts
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
-//types for the order
 interface Order {
   id?: string
   title: string;
@@ -9,14 +9,15 @@ interface Order {
   tableNumber: string;
   quantity: number;
   timestamp: string;
+  status: 'pending' | 'in-progress' | 'completed'; 
 }
 
-//types for the order store
 interface OrderStore {
   orders: Order[];
   addOrder: (order: Order) => void;
   clearOrders: () => void;
   removeOrder: (id: string) => void;
+  updateOrderStatus: (id: string, status: Order['status']) => void; 
 }
 
 export const useOrderStore = create<OrderStore>()(
@@ -24,12 +25,21 @@ export const useOrderStore = create<OrderStore>()(
     (set) => ({
       orders: [],
       addOrder: (order) => set((state) => ({
-        orders: [...state.orders, { ...order, id: order.id || new Date().toISOString() }]
+        orders: [...state.orders, { 
+          ...order, 
+          id: order.id || new Date().toISOString(),
+          status: 'pending' // Set default status
+        }]
       })),
       removeOrder: (id) => set((state) => ({
-        orders: state.orders.filter((order) => order.timestamp !== id)
+        orders: state.orders.filter((order) => order.id !== id)
       })),
-      clearOrders: () => set({ orders: [] })
+      clearOrders: () => set({ orders: [] }),
+      updateOrderStatus: (id, status) => set((state) => ({
+        orders: state.orders.map((order) => 
+          order.id === id ? { ...order, status } : order
+        )
+      }))
     }),
     {
       name: 'order-storage'
