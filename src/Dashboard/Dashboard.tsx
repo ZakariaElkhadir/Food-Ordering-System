@@ -1,7 +1,7 @@
 import { useOrderStore } from '../Cards/store/orderStore';
 import { useNavigate } from 'react-router-dom';
 import './Dashboard.scss';
-import { useEffect } from 'react';
+import { useAutoRefresh } from './useAutoRefresh';
 
 const Dashboard = () => {
   const orders = useOrderStore((state) => state.orders);
@@ -9,8 +9,8 @@ const Dashboard = () => {
   const clearOrders = useOrderStore((state) => state.clearOrders);
   const removeOrder = useOrderStore((state) => state.removeOrder);
   const updateOrderStatus = useOrderStore((state) => state.updateOrderStatus);
-
-  
+  const refreshOrders = useOrderStore((state) => state.refreshOrders);
+  useAutoRefresh(refreshOrders, 3000);
   
   const handleStatusChange = (orderId: string | undefined) => {
     if (!orderId) return;
