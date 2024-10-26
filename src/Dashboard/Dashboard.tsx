@@ -1,4 +1,4 @@
-import { useOrderStore } from '../Cards/store/orderStore';
+import { useOrderStore, Order } from '../Cards/store/orderStore';
 import { useNavigate } from 'react-router-dom';
 import './Dashboard.scss';
 import { useAutoRefresh } from './useAutoRefresh';
