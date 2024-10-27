@@ -1,7 +1,8 @@
+import { useEffect, useState } from 'react';
 import { useOrderStore, Order } from '../Cards/store/orderStore';
+import { websocketService } from '../Cards/websocketService';
 import { useNavigate } from 'react-router-dom';
 import './Dashboard.scss';
-import { useAutoRefresh } from './useAutoRefresh';
 
 const Dashboard = () => {
   const orders = useOrderStore((state) => state.orders);
@@ -9,29 +10,94 @@ const Dashboard = () => {
   const clearOrders = useOrderStore((state) => state.clearOrders);
   const removeOrder = useOrderStore((state) => state.removeOrder);
   const updateOrderStatus = useOrderStore((state) => state.updateOrderStatus);
-  const refreshOrders = useOrderStore((state) => state.refreshOrders);
-  useAutoRefresh(refreshOrders, 3000);
-  
-  const handleStatusChange = (orderId: string | undefined) => {
-    if (!orderId) return;
-    
-    const order = orders.find(o => o.id === orderId);
-    if (!order) return;
+  const [connectionStatus, setConnectionStatus] = useState('NOT_INITIALIZED');
+  const [lastError, setLastError] = useState<string | null>(null);
 
-    // Define status flow
-    const nextStatus: { [key: string]: Order['status'] } = {
-      'pending': 'in-progress',
-      'in-progress': 'completed',
-      'completed': 'completed'
+  useEffect(() => {
+    console.log('Dashboard: Initializing WebSocket connection monitoring');
+
+    // Monitor WebSocket connection state
+    const checkConnectionStatus = () => {
+      const status = websocketService.getConnectionState();
+      setConnectionStatus(status);
+      console.log('Dashboard: Connection status:', status);
     };
 
-    updateOrderStatus(orderId, nextStatus[order.status]);
+    // Check connection status regularly
+    const intervalId = setInterval(checkConnectionStatus, 1000);
+    checkConnectionStatus(); // Initial check
+
+    // Handle WebSocket messages
+    websocketService.onMessage((data) => {
+      console.log('Dashboard: Received message:', data.type);
+      
+      try {
+        switch (data.type) {
+          case 'SYNC_ORDERS':
+            console.log('Dashboard: Syncing orders');
+            useOrderStore.getState().syncOrders(data.payload);
+            break;
+          case 'NEW_ORDER':
+            console.log('Dashboard: Adding new order');
+            if (!orders.find(o => o.id === data.payload.id)) {
+              useOrderStore.getState().addOrder(data.payload);
+            }
+            break;
+          case 'REMOVE_ORDER':
+            console.log('Dashboard: Removing order');
+            useOrderStore.getState().removeOrder(data.payload.id);
+            break;
+          case 'UPDATE_STATUS':
+            console.log('Dashboard: Updating order status');
+            useOrderStore.getState().updateOrderStatus(
+              data.payload.id,
+              data.payload.status
+            );
+            break;
+          case 'CLEAR_ORDERS':
+            console.log('Dashboard: Clearing orders');
+            useOrderStore.getState().clearOrders();
+            break;
+        }
+      } catch (error) {
+        console.error('Dashboard: Error processing message:', error);
+        setLastError(error instanceof Error ? error.message : 'Unknown error');
+      }
+    });
+
+    return () => {
+      clearInterval(intervalId);
+      websocketService.disconnect();
+    };
+  }, []);
+
+  const getConnectionStatusDisplay = () => {
+    switch (connectionStatus) {
+      case 'OPEN':
+        return <span className="status-connected">Connected</span>;
+      case 'CONNECTING':
+        return <span className="status-connecting">Connecting...</span>;
+      case 'CLOSED':
+        return <span className="status-disconnected">Disconnected</span>;
+      case 'CLOSING':
+        return <span className="status-closing">Closing...</span>;
+      default:
+        return <span className="status-disconnected">Not Connected</span>;
+    }
   };
 
   return (
     <div className="dashboard">
       <div className="dashboard-header">
         <h1>Orders Dashboard</h1>
+        <div className="connection-status">
+          {getConnectionStatusDisplay()}
+          {lastError && (
+            <div className="error-message">
+              Last Error: {lastError}
+            </div>
+          )}
+        </div>
         <button className="back-button" onClick={() => navigate('/')}>
           Back to Menu
         </button>
@@ -61,7 +127,7 @@ const Dashboard = () => {
                   {order.status !== 'completed' && (
                     <button 
                       className="accept-button"
-                      onClick={() => order.id && handleStatusChange(order.id)}
+                      onClick={() => order.id && updateOrderStatus(order.id, order.status === 'pending' ? 'in-progress' : 'completed')}
                     >
                       {order.status === 'pending' ? 'Accept' : 'Complete'}
                     </button>
