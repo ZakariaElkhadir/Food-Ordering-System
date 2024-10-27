@@ -7,7 +7,7 @@ const Products = () => {
         <div className="products">
             
             <Header/>
-            <h2>Products Page</h2>
+            <h2 style={{marginLeft: "90px"}}>Products Page</h2>
             <ProductsItem/>
             <Footer/>
         </div>
