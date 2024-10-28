@@ -1,5 +1,6 @@
 import  { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-scroll';
+import { Link as Route } from 'react-router-dom';
 import menuIcon from './Menu/menu-svg.svg';
 import closeIcon from './Menu/close-svg.svg';
 import './Header.scss';
@@ -15,12 +16,12 @@ const Header = () => {
         <header>
             <nav className="nav-bar">
                 <div className="logo">
-                    <Link to="/">Riad Flavors</Link>
+                    <Route to="/">Riad Flavors</Route>
                 </div>
                 <ul className={`nav-links ${isMenuOpen ? 'nav-links--open' : ''}`}>
-                    <li><a href="#">Home</a></li>
+                    <li><Route to="/home">Home</Route></li>
                     <li><a href="#">Services</a></li>
-                    <li><Link to="/about-section">About</Link></li>
+                    <li style={{cursor: 'pointer'}}><Link to="about-section" smooth={true} duration={500}>About</Link></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
                 <button className="menu-toggle" onClick={toggleMenu}>

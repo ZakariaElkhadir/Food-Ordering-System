@@ -99,7 +99,7 @@ const Dashboard = () => {
           )}
         </div>
         <button className="back-button" onClick={() => navigate('/')}>
-          Back to Menu
+          Go to Menu
         </button>
         <button className="clear-button" onClick={clearOrders}>
           Clear Orders

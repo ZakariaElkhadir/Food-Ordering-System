@@ -12,6 +12,7 @@ $desktop-lg: 1200px;
     h2{
         color: #ECDFCC;
         @extend .inter;
+        padding-top: 13px;
     }
     .about-container{
         display: flex;
