@@ -29,7 +29,7 @@ export const useOrderStore = create<OrderStore>()(
       version: 0,
       
       addOrder: (order) => {
-        const newOrder = {
+        const newOrder: Order = {
           ...order,
           id: order.id || new Date().toISOString(),
           status: 'pending'

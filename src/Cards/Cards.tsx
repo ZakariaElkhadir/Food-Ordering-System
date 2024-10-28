@@ -30,7 +30,8 @@ function Card({ image, title, description, price }: CardProps) {
             title,
             price,
             ...orderDetails,
-            timestamp: new Date().toISOString()
+            timestamp: new Date().toISOString(),
+            status: 'pending' as 'pending' // or another appropriate initial status
         };
         
         addOrder(orderData);

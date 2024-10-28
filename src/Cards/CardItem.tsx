@@ -7,21 +7,21 @@ function CardItem() {
         <div className="cards">
             <Card
                 title="Pizza Filled"
-                description="hello world"
+                description="Food"
                 image={pizza}
                 price="$10.00"
             />
 
              <Card
                 title="Cheese Burger "
-                description="hello world"
+                description="Food"
                 image={burger}
                 price="$10.00"
             />
 
             <Card 
             title="Tomato Salad"
-            description="hello world"
+            description="Food"
             image={salad}
             price="$20.00"/>
 

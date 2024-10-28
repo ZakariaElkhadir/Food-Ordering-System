@@ -15,79 +15,79 @@ import tea from '../assets/drinks-images/tea.jpg';
 const products = [
     {
         title: "Fried Chicken",
-        description: "hello world",
+        description: "Food",
         image: friedchicken,
         price: "100 DH"
     },
     {
         title: "Pikaso",
-        description: "hello world",
+        description: "Food",
         image: pikaso,
         price: "120 DH"
     },
     {
         title: "Shawarma Pita",
-        description: "hello world",
+        description: "Food",
         image: shawarma_pita,
         price: "80 DH"
     },
     {
         title: "Orange",
-        description: "hello world",
+        description: "Drink",
         image: orange,
         price: "20 DH"
     },
     {
         title: "Mojito",
-        description: "hello world",
+        description: "Drink",
         image: mojito,
         price: "30 DH"
     },
     {
         title: "Strawberry",
-        description: "hello world",
+        description: "Drink",
         image: strawberry,
         price: "25 DH"
     },
     {
         title: "Squid Shrimp",
-        description: "hello world",
+        description: "Food",
         image: squid_shrimp,
         price: "150 DH"
     },
     {
         title: "Taco",
-        description: "hello world",
+        description: "Food",
         image: taco,
         price: "50 DH"
     },
     {
         title: "Shawarma Dish",
-        description: "hello world",
+        description: "Food",
         image: shawarmadish,
         price: "90 DH"
     },
     {
         title: "Pina Colada",
-        description: "hello world",
+        description: "Food",
         image: pina_colada,
         price: "40 DH"
     },
     {
         title: "Black Coffee",
-        description: "hello world",
+        description: "Drink",
         image: black_coffee,
         price: "15 DH"
     },
     {
         title: "Capoccino",
-        description: "hello world",
+        description: "Drink",
         image: capoccino,
         price: "20 DH"
     },
     {
         title: "Tea",
-        description: "hello world",
+        description: "Drink",
         image: tea,
         price: "10 DH"
     }
