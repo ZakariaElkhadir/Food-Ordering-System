@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useOrderStore, Order } from '../Cards/store/orderStore';
+import { useOrderStore} from '../Cards/store/orderStore';
 import { websocketService } from '../Cards/websocketService';
 import { useNavigate } from 'react-router-dom';
 import './Dashboard.scss';
