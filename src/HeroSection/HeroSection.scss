@@ -6,7 +6,7 @@ $mobile-sm: 320px;
 $mobile: 480px;
 $tablet: 768px;
 $desktop: 1024px;
-$desktop-lg: 1200px;
+$desktop-lg: 1300px;
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 .inter{
     font-family: "Inter", sans-serif;
@@ -41,7 +41,7 @@ $desktop-lg: 1200px;
 
     }
     .button{
-        margin: -115px 0 0 -28.5px;
+        margin: -100px 0 0 -28.5px;
     }
 
     .button .btn-1{
@@ -87,8 +87,8 @@ $desktop-lg: 1200px;
             flex-direction: column;
             padding-top: clamp(60px, 15%, 100px);
             gap: 2rem;
-            
-           
+
+
 
             h2 {
                 font-size: clamp(2rem, 6vw, 2.5rem);
@@ -104,7 +104,7 @@ $desktop-lg: 1200px;
                 height: auto;
                 margin: 20px auto;
                 display: block;
-                
+
             }
         }
 
@@ -114,7 +114,7 @@ $desktop-lg: 1200px;
             justify-content: center;
             gap: 1rem;
             margin: 0 0 0 -130px;
-            
+
             width: 100%;
             max-width: 500px;
             .btn-1{
@@ -134,21 +134,21 @@ $desktop-lg: 1200px;
         padding: 0;
         height: 90vh;
         width: 100%;
-        
+
         .container {
-            display: flex; 
+            display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center; 
-            
+            text-align: center;
+
             h2{
-                
+
                 white-space: nowrap;
                 font-size: clamp(20px, 4vw, 32px);
                 margin-left: -130px;
                 padding: 10px;
-                
+
             }
 
             img {
@@ -164,8 +164,30 @@ $desktop-lg: 1200px;
                 width: 80%;
                 margin: 20px;
             }
-           
+
         }
     }
 }
+@media (width >= $desktop-lg) {
+    .Hero-section {
+        .container {
+            h2 {
+                font-size: 3.5rem;
+            }
 
+        }
+        .button{
+            margin: -80px auto 0 70px;
+            .btn-1, .btn-2 {
+                width: 200px;
+                height: 70px;
+                font-size: 30px;
+            }
+        }
+    }
+    img{
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+    }
+}
