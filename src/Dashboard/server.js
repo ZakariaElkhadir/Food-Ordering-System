@@ -1,7 +1,6 @@
-// server.js
 import express from 'express';
 import { createServer } from 'http';
-import { WebSocket, WebSocketServer } from 'ws';
+import { WebSocketServer } from 'ws';
 import cors from 'cors';
 
 // Create Express app
@@ -87,7 +86,7 @@ app.get('/health', (req, res) => {
 });
 
 // Start server
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
   console.log(`WebSocket server is ready`);
