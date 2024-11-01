@@ -1,13 +1,11 @@
-// websocketService.ts
-//import { Order } from './store/orderStore';
-
+// src/Cards/websocketService.ts
 class WebSocketService {
   private socket: WebSocket | null = null;
   private onMessageCallback: ((data: any) => void) | null = null;
   private reconnectAttempts = 0;
   private maxReconnectAttempts = 5;
   private reconnectDelay = 3000;
-  private readonly WS_URL = 'ws://localhost:3001';
+  private readonly WS_URL = 'wss://food-ordering-system-768b.onrender.com'; // Update this URL
   private isConnecting = false;
 
   constructor() {
@@ -20,13 +18,11 @@ class WebSocketService {
       console.log('WebSocketService: Connection already in progress');
       return;
     }
-
     this.isConnecting = true;
     console.log('WebSocketService: Attempting to connect to', this.WS_URL);
-
     try {
       this.socket = new WebSocket(this.WS_URL);
-      
+
       this.socket.onopen = () => {
         console.log('WebSocketService: Connection established successfully');
         this.isConnecting = false;
@@ -78,7 +74,6 @@ class WebSocketService {
       console.warn('WebSocketService: No socket connection available');
       return;
     }
-
     if (this.socket.readyState === WebSocket.OPEN) {
       try {
         const message = JSON.stringify({ type, payload });
