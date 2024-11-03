@@ -2,24 +2,13 @@ import express from 'express';
 import { createServer } from 'http';
 import { WebSocketServer, WebSocket } from 'ws';
 import cors from 'cors';
-import rateLimit from 'express-rate-limit';
-import helmet from 'helmet';
-import { v4 as uuidv4 } from 'uuid';
 
-// Create Express app with security middleware
+// Create Express app
 const app = express();
 app.use(cors({
   origin: process.env.ALLOWED_ORIGINS?.split(',') || '*',
   methods: ['GET', 'POST']
 }));
-app.use(helmet());
-
-// Rate limiting
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100 // limit each IP to 100 requests per windowMs
-});
-app.use(limiter);
 
 // Create HTTP server
 const server = createServer(app);
@@ -27,11 +16,10 @@ const server = createServer(app);
 // WebSocket server configuration
 const wss = new WebSocketServer({ 
   server,
-  // Add WebSocket specific configurations
   clientTracking: true,
   perMessageDeflate: {
     zlibDeflateOptions: {
-      level: 6 // Balance between compression and CPU usage
+      level: 6
     }
   }
 });
@@ -75,7 +63,6 @@ async function broadcast(data, excludeClient = null) {
           });
         }).catch(error => {
           console.error(`Failed to send to client: ${metadata.id}`, error);
-          // Handle failed client - possibly remove them
           handleFailedClient(client);
         })
       );
@@ -94,17 +81,10 @@ function handleFailedClient(client) {
   }
 }
 
-// Connection handling with authentication
+// Connection handling
 wss.on('connection', async (ws, req) => {
-  // Basic authentication check (expand based on your needs)
-  const authToken = req.headers['authorization'];
-  if (process.env.REQUIRE_AUTH && !authToken) {
-    ws.close(4001, 'Authentication required');
-    return;
-  }
-
   // Set up client metadata
-  const clientId = uuidv4();
+  const clientId = Math.random().toString(36).substr(2, 9);
   const metadata = {
     id: clientId,
     connectedAt: new Date(),
@@ -145,10 +125,10 @@ wss.on('connection', async (ws, req) => {
       // Validate message
       validateMessage(data);
 
-      // Update server-side state with optimistic locking
+      // Update server-side state
       switch (data.type) {
         case 'NEW_ORDER':
-          data.payload.id = data.payload.id || uuidv4();
+          data.payload.id = data.payload.id || Math.random().toString(36).substr(2, 9);
           data.payload.timestamp = new Date().toISOString();
           orders.push(data.payload);
           break;
@@ -219,7 +199,7 @@ wss.on('close', () => {
   clearInterval(interval);
 });
 
-// Enhanced health check endpoint with detailed metrics
+// Health check endpoint
 app.get('/health', (req, res) => {
   const metrics = {
     status: 'ok',
@@ -234,13 +214,12 @@ app.get('/health', (req, res) => {
         acc[order.status] = (acc[order.status] || 0) + 1;
         return acc;
       }, {})
-    },
-    memory: process.memoryUsage()
+    }
   };
   res.json(metrics);
 });
 
-// Start server with enhanced error handling
+// Start server
 const PORT = process.env.PORT || 3001;
 server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
@@ -254,7 +233,6 @@ server.listen(PORT, () => {
 const gracefulShutdown = async () => {
   console.log('Initiating graceful shutdown...');
   
-  // Stop accepting new connections
   server.close(async () => {
     console.log('HTTP server closed');
     
