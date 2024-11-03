@@ -113,16 +113,19 @@ $desktop-lg: 1300px;
 
             justify-content: center;
             gap: 1rem;
-            margin: 0 0 0 -130px;
+            margin: 0 0 0 -230px;
 
             width: 100%;
             max-width: 500px;
             .btn-1{
-               margin-right: 20px;
+               margin-right: 0;
+            }
+            .btn-2{
+                margin-left: 15px;
             }
             .btn-1, .btn-2 {
                 width: clamp(130px, 40%, 155px);
-                margin: 0;
+                height: 50px;
                 font-size: 1.4rem;
             }
         }
