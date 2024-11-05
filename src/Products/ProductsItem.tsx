@@ -80,7 +80,7 @@ const products = [
         price: "15 DH"
     },
     {
-        title: "Capoccino",
+        title: "Cappuccino",
         description: "Drink",
         image: capoccino,
         price: "20 DH"
