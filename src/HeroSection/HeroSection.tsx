@@ -1,5 +1,5 @@
 import Header from "../Header/Header";
-import contImage from '../assets/food-images/prawn-caesar.png'
+import contImage from '../assets/food-images/prawn-caesar.webp'
 import './HeroSection.scss'
 import { Link } from "react-router-dom";
 import { Link as Scroll } from "react-scroll";
