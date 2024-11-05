@@ -20,7 +20,7 @@ const products = [
         price: "100 DH"
     },
     {
-        title: "Pikaso",
+        title: "picasso",
         description: "Food",
         image: pikaso,
         price: "120 DH"
