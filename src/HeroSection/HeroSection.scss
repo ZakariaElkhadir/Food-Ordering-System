@@ -13,184 +13,163 @@ $desktop-lg: 1300px;
     font-optical-sizing: auto;
     font-style: normal;
 }
-.Hero-section{
+.hero-wrapper {
     width: 100%;
-    height: 680px;
     background-color: $hero-bg;
+}
+.hero-section {
+    width: 100%;
+    min-height: 680px;
+    padding: 2rem;
+    color: $white-color;
 
-    .container{
+    .hero-container {
+        max-width: 1200px;
+        margin: 0 auto;
         display: flex;
-        justify-content: space-around;
-        padding-top: 10%;
+        justify-content: space-between;
         align-items: center;
-        color: $white-color;
-        h2{
+        gap: 2rem;
+    }
+
+    .hero-content {
+        flex: 1;
+        padding-right: 2rem;
+
+        .hero-title {
             font-size: 3.3rem;
             @extend .inter;
-            margin-top: -30px;
-            padding-right: 20px;
-            text-align: center;
-
-        }
-        img{
-            margin-left: 50px;
-            margin-right: -50px;
+            margin-bottom: 1rem;
+            line-height: 1.2;
         }
 
-
-
-    }
-    .button{
-        margin: -100px 0 0 -28.5px;
-    }
-
-    .button .btn-1{
-        cursor: pointer;
-        background-color: $btn-bg;
-        width: 150px;
-        height: 60px;
-        border-radius: 50px;
-        border: none;
-        font-size: 25px;
-        margin-right: 30px;
-        color: $white-color;
-
-
-    }
-    .button .btn-2{
-        cursor: pointer;
-        background: none;
-        width: 150px;
-        height: 60px;
-        border-radius: 50px;
-        border: 2px solid $btn-bg;
-        font-size: 25px;
-        color: $white-color;
-        &:hover{
-
-            background-color: $btn-bg;
-            transition: 0.3s;
-
-
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
         }
 
-    }
-
-
-}
-@media (max-width: $tablet) {
-    .Hero-section {
-        min-height: 90vh;
-        padding: 20px;
-        width: 95%;
-        .container {
-            flex-direction: column;
-            padding-top: clamp(60px, 15%, 100px);
-            gap: 2rem;
-
-
-
-            h2 {
-                font-size: clamp(2rem, 6vw, 2.5rem);
-                padding: 0 15px;
-                margin: 0 auto;
-                max-width: 90%;
-                line-height: 1.2;
-            }
-
-            img {
-                width: 100%;
-                max-width: 400px;
-                height: auto;
-                margin: 20px auto;
-                display: block;
-
-            }
-        }
-
-        .button {
+        .hero-buttons {
             display: flex;
-
-            justify-content: center;
             gap: 1rem;
-            margin: 0 0 0 -230px;
 
+            button {
+                cursor: pointer;
+                padding: 1rem 2rem;
+                border-radius: 50px;
+                font-size: 1.1rem;
+                transition: all 0.3s ease;
+            }
+
+            .btn-primary {
+                background-color: $btn-bg;
+                border: none;
+                color: $white-color;
+            }
+
+            .btn-secondary {
+                background: none;
+                border: 2px solid $btn-bg;
+                color: $white-color;
+
+                &:hover {
+                    background-color: $btn-bg;
+                }
+            }
+        }
+    }
+
+    .hero-image {
+        flex: 1;
+        padding-left: 2rem;
+        position: relative;
+
+        img {
             width: 100%;
             max-width: 500px;
-            .btn-1{
-               margin-right: 0;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .image-decoration {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid $btn-bg;
+            border-radius: 10px;
+            z-index: -1;
+        }
+    }
+}
+@media (max-width: $tablet) {
+    .hero-section {
+        padding: 1rem;
+
+        .hero-container {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .hero-content {
+            padding-right: 0;
+            padding-bottom: 2rem;
+
+            .hero-title {
+                font-size: clamp(2rem, 6vw, 2.5rem);
             }
-            .btn-2{
-                margin-left: 15px;
+
+            .hero-buttons {
+                justify-content: center;
             }
-            .btn-1, .btn-2 {
-                width: clamp(130px, 40%, 155px);
-                height: 50px;
-                font-size: 1.4rem;
-            }
+        }
+
+        .hero-image {
+            padding-left: 0;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
         }
     }
 }
 @media (max-width: $mobile) {
-    .Hero-section {
-        margin: 0;
-        padding: 0;
-        height: 90vh;
-        width: 100%;
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-
-            h2{
-
-                white-space: nowrap;
-                font-size: clamp(20px, 4vw, 32px);
-                margin-left: -130px;
-                padding: 10px;
-
+    .hero-section {
+        .hero-content {
+            .hero-title {
+                font-size: clamp(1.5rem, 4vw, 2rem);
             }
 
-            img {
-                width: 300px; /* Responsive image size */
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+
+                button {
+                    width: 100%;
+                    max-width: 300px;
+                }
             }
         }
 
-        .button {
-            margin: 0;
-            padding: 0px;
-
-            .btn-1, .btn-2 {
-                width: 80%;
-                margin: 20px;
+        .hero-image {
+            img {
+                max-width: 300px;
             }
-
         }
     }
 }
-@media (width >= $desktop-lg) {
-    .Hero-section {
-        .container {
-            h2 {
+@media (min-width: $desktop-lg) {
+    .hero-section {
+        .hero-content {
+            .hero-title {
                 font-size: 3.5rem;
             }
-
         }
-        .button{
-            margin: -80px auto 0 70px;
-            .btn-1, .btn-2 {
-                width: 200px;
-                height: 70px;
-                font-size: 30px;
+
+        .hero-buttons {
+            button {
+                padding: 1.2rem 2.5rem;
+                font-size: 1.3rem;
             }
         }
-    }
-    img{
-        width: 100%;
-        max-width: 400px;
-        height: auto;
     }
 }

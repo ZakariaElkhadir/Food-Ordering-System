@@ -1,86 +1,110 @@
-@import '../HeroSection/HeroSection.scss'; // for getting the inter font
-$mobile-sm: 320px;
-$mobile: 480px;
-$tablet: 768px;
-$desktop: 1024px;
-$desktop-lg: 1200px;
-.about-section{
-    height: 600px;
-    background-color: #181C14;
+// Import Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
 
-    
-    h2{
-        color: #ECDFCC;
-        @extend .inter;
-        padding-top: 13px;
-    }
-    .about-container{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        padding-top: 90px;
-        width: 100%;
-        }
-        p{
-            padding: 40px;
-            color: #ECDFCC;
-            font-size: 23px;
-            text-align: justify;
-            width: 200%;
-            margin-left: 0px;
-        }
-        img{
-            width: 400px;
-            height: 100%;
-            background-color: #ECDFCC;
-            padding: -5px;
-            border-radius: 50%;
-            
-            
-        }
+// Variables
+$primary-color: #FF8C04;
+$text-color: #ECDFCC;
+$background-dark: #181C14;
+$spacing: 2rem;
+
+.about-section {
+    padding: 4rem 0;
+    background-color: $background-dark;
+    color: $text-color;
 }
-@media screen and (max-width: $tablet){
-    .about-section{
-        height: 1000px;
-        h2{
-            font-size: 2rem;
-        }
-        .about-container{
-            flex-direction: column;
-            padding-top: 50px;
-        }
-        p{
-            padding: 20px;
-            font-size: 20px;
-            width: auto;
-        }
-        img{
-            width: 100%;
-            height: 50%;
-        }
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+
+    @media (max-width: 768px) {
+        flex-direction: column-reverse;
+        gap: 2rem;
+        padding: 0 1rem;
     }
 }
-@media screen and (max-width: $mobile){
-    .about-section{
-        height: 800px;
-        h2{
-            font-size: 1.5rem;
-        }
-        .about-container{
-            flex-direction: column;
-            padding-top: 50px;
-        }
-        p{
-            padding: 20px;
-            font-size: 20px;
-            line-height: 1.4;
+
+.about-content {
+    flex: 1;
+
+    .about-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 3rem;
+        font-weight: 700;
+        color: $primary-color;
+        margin-bottom: 2rem;
+        line-height: 1.2;
+
+        @media (max-width: 768px) {
+            font-size: 2.5rem;
             text-align: center;
-            margin-left: -130px;
-            width: 300px;
-        }
-        img{
-            width: 100%;
-            height: 50%;
         }
     }
+
+    .about-text {
+        .quote {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: rgba($text-color, 0.9);
+            font-weight: 300;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            @media (max-width: 768px) {
+                font-size: 1rem;
+                text-align: center;
+            }
+        }
+    }
+}
+
+.about-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 768px) {
+            max-width: 80%;
+        }
+    }
+}
+
+// Animation
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.about-content, .about-image {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.about-image {
+    animation-delay: 0.3s;
 }
