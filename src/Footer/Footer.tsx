@@ -17,7 +17,7 @@ function Footer() {
                 <div className="footer-section">
                     <h3>Contact Us</h3>
                     <ul>
-                        <li>Email: info@moroccanfood.com</li>
+                        <li>Email: zelkhadir5@gmail.com</li>
                         <li>Phone: +212 6XX-XXXXXX</li>
                         <li>Address: Casablanca, Morocco</li>
                     </ul>
