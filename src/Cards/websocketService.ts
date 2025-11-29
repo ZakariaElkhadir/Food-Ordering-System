@@ -1,11 +1,11 @@
 // src/Cards/websocketService.ts
 class WebSocketService {
   private socket: WebSocket | null = null;
-  private onMessageCallback: ((data: any) => void) | null = null;
+  private onMessageCallback: ((data: { type: string; payload: unknown }) => void) | null = null;
   private reconnectAttempts = 0;
   private maxReconnectAttempts = 5;
   private reconnectDelay = 3000;
-  private readonly WS_URL = 'wss://food-ordering-system-768b.onrender.com'; // Update this URL
+  private readonly WS_URL = import.meta.env.VITE_WS_URL || 'wss://food-ordering-system-768b.onrender.com';
   private isConnecting = false;
 
   constructor() {
@@ -69,7 +69,7 @@ class WebSocketService {
     }
   }
 
-  sendMessage(type: string, payload: any) {
+  sendMessage(type: string, payload: unknown) {
     if (!this.socket) {
       console.warn('WebSocketService: No socket connection available');
       return;
@@ -87,7 +87,7 @@ class WebSocketService {
     }
   }
 
-  onMessage(callback: (data: any) => void) {
+  onMessage(callback: (data: { type: string; payload: unknown }) => void) {
     this.onMessageCallback = callback;
     console.log('WebSocketService: Message callback registered');
   }

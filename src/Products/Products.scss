@@ -1,14 +1,11 @@
-@import '../HeroSection/HeroSection.scss';
-.products{
-    h2{
-        color: red;
-    }
-}
-.products{
-    h2{
-        font-size: 2rem;
-        margin: 2rem;
-        color: #181C14;
-        @extend .inter;
-    }
+@import "../HeroSection/HeroSection.scss";
+
+.products {
+  h2 {
+    font-size: 2rem;
+    margin: 2rem;
+    margin-left: 90px;
+    color: #181c14;
+    @extend .inter;
+  }
 }
