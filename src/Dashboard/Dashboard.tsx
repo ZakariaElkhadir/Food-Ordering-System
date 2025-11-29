@@ -33,16 +33,16 @@ const Dashboard = () => {
         <h1>Orders Dashboard</h1>
         <div className="connection-status">
           {getConnectionStatusDisplay()}
-          {lastError && <div className="error-message">Error: {lastError}</div>}
+          {lastError && (
+            <div className="error-message">Last Error: {lastError}</div>
+          )}
         </div>
-        <div className="actions">
-          <button className="back-button" onClick={() => navigate("/")}>
-            Go to Menu
-          </button>
-          <button className="clear-button" onClick={clearOrders}>
-            Clear Orders
-          </button>
-        </div>
+        <button className="back-button" onClick={() => navigate("/")}>
+          Go to Menu
+        </button>
+        <button className="clear-button" onClick={clearOrders}>
+          Clear Orders
+        </button>
       </div>
 
       {orders.length === 0 ? (
@@ -56,21 +56,12 @@ const Dashboard = () => {
                 <span className="price">{order.price}</span>
               </div>
               <div className="order-details">
-                <div className="info-row">
-                  <span className="label">Table</span>
-                  <span className="value">{order.tableNumber}</span>
-                </div>
-                <div className="info-row">
-                  <span className="label">Quantity</span>
-                  <span className="value">{order.quantity}</span>
-                </div>
-
-                <span className={`status-badge`}>{order.status}</span>
-
-                <span className="timestamp">
+                <p>Table: {order.tableNumber}</p>
+                <p>Quantity: {order.quantity}</p>
+                <p className="timestamp">
                   {new Date(order.timestamp).toLocaleString()}
-                </span>
-
+                </p>
+                <p className="status">Status: {order.status}</p>
                 <div className="button-group">
                   {order.status !== "completed" && (
                     <button
@@ -92,7 +83,7 @@ const Dashboard = () => {
                     className="remove-button"
                     onClick={() => order.id && removeOrder(order.id)}
                   >
-                    Remove
+                    Remove Order
                   </button>
                 </div>
               </div>
