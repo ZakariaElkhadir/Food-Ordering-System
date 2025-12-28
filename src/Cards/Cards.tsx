@@ -8,6 +8,9 @@ interface CardProps {
   title: string;
   description: string;
   price: string;
+  offer?: string;
+  discount?: number;
+  isPopular?: boolean;
 }
 
 interface OrderDetails {
@@ -15,7 +18,7 @@ interface OrderDetails {
   quantity: number;
 }
 
-function Card({ image, title, description, price }: CardProps) {
+function Card({ image, title, description, price, offer, discount, isPopular }: CardProps) {
   const [showOrderForm, setShowOrderForm] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const addOrder = useOrderStore((state) => state.addOrder);
@@ -50,14 +53,49 @@ function Card({ image, title, description, price }: CardProps) {
 
   return (
     <section className="card-container">
-      <div className="card">
-        {image && <img src={image} width={200} alt={title} />}
-        <h2>{title}</h2>
-        <p>{description}</p>
-        <p>{price}</p>
-        <button onClick={handleOrderClick}>Buy Now</button>
+      <div className={`card ${isPopular ? 'popular' : ''}`}>
+        {isPopular && (
+          <div className="popular-badge">
+            <span>⭐ Popular</span>
+          </div>
+        )}
+        {discount && (
+          <div className="discount-badge">
+            <span>{discount}% OFF</span>
+          </div>
+        )}
+        <div className="image-wrapper">
+          {image && <img src={image} width={200} alt={title} />}
+          {offer && (
+            <div className="offer-ribbon">
+              <span>{offer}</span>
+            </div>
+          )}
+        </div>
+        <div className="card-content">
+          <h2>{title}</h2>
+          <p className="description">{description}</p>
+          <div className="price-section">
+            {discount ? (
+              <>
+                <span className="original-price">{price}</span>
+                <span className="discounted-price">
+                  ${(parseFloat(price.replace('$', '')) * (1 - discount / 100)).toFixed(2)}
+                </span>
+              </>
+            ) : (
+              <span className="current-price">{price}</span>
+            )}
+          </div>
+          <button className="order-btn" onClick={handleOrderClick}>
+            <span className="btn-text">Order Now</span>
+            <span className="btn-icon">→</span>
+          </button>
+        </div>
         {showSuccess && (
-          <div className="success-message">Order placed successfully!</div>
+          <div className="success-message">
+            <span>✓ Order placed successfully!</span>
+          </div>
         )}
       </div>
       {showOrderForm && (
