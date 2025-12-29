@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Respectful crawling keeps the site responsive
+Crawl-delay: 10
