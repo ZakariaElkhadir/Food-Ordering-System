@@ -38,12 +38,10 @@ function HeroSection() {
             </div>
             <div className="hero-buttons">
               <Scroll to="cards" smooth={true} duration={500}>
-                <Link to='#'>
-                  <button className="btn-primary">
-                    Order Now
-                    <span className="btn-icon">→</span>
-                  </button>
-                </Link>
+                <button className="btn-primary">
+                  Order Now
+                  <span className="btn-icon">→</span>
+                </button>
               </Scroll>
               <Link to="/products">
                 <button className="btn-secondary">
